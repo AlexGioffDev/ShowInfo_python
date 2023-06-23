@@ -4,6 +4,12 @@ from PIL import ImageTk, Image
 from io import BytesIO
 from tkinter import font
 
+import os
+import sys
+
+config_dir = os.path.join(sys._MEIPASS, 'config') if getattr(sys, 'frozen', False) else os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config')
+sys.path.append(config_dir)
+
 import keys
 params = {
     "api_key": keys.api_key,
@@ -218,21 +224,3 @@ next_button.place(relx=0, rely=0, x=120, y=int(int(400 * 0.85) + 15), relwidth=0
 
 
 root.mainloop()
-
-
-
-
-
-
-
-
-# # Canvas
-# c = tk.Canvas(root, background="white", yscrollcommand=vscrollbar.set)
-
-# vscrollbar.config(command=c.yview)
-# vscrollbar.grid(row=1, column=5, sticky="nse")
-
-
-# # Updated the window creation
-# c.create_window(0, 0, window=f, anchor='nw')
-# all_shows = c.create_text(120, 100, text='', font=("Arial", 10, "normal"), width=350)
